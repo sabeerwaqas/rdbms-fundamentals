@@ -33,6 +33,19 @@ A university maintains records of students, courses, instructors, departments, a
 3. Identify relationships between the entities.
 4. Draw the Entity–Relationship Diagram (ERD) using the information from Tasks 1–3.
 
+## Learn the ERD symbols before drawing
+
+Read [Learn the ERD symbols gradually](../02-conceptual-database-design/README.md#learn-the-erd-symbols-gradually) before starting Task 4. It introduces the rectangle, oval, underlined key attribute, relationship diamond, double rectangle, double oval, dashed oval, and double diamond with examples.
+
+For this assignment, at minimum you should know:
+- Rectangle: entity type.
+- Oval: attribute.
+- Underlined attribute: key.
+- Diamond: relationship.
+- Relationship lines/cardinality: how entity types are associated.
+
+The scenario does not explicitly require weak entities or multi-valued/derived attributes. Do not add them just to use every symbol; use a symbol only when the requirements justify it.
+
 ## Concepts needed
 
 ### Entities
