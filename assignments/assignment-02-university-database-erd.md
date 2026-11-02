@@ -1,84 +1,88 @@
 # Assignment 02 — University Database ER Diagram
 
-**Marks:** 20  
-**Course coverage stated in the brief:** Lab 3–Lab 4  
-**Due date stated in the brief:** 03 November 2026  
-**Required submission format:** Microsoft Word document (.docx) containing the final ER diagram
+<small>**Marks:** 20 · **Lab coverage stated in brief:** Lab 3–Lab 4 · **Deadline stated in brief:** 03 November 2026</small>
 
-> This page is a concise study-oriented restatement of the assignment brief supplied for this repository. Follow the instructions on your official VU assignment page if any detail differs.
+**Related repository section:** [02 — Conceptual Database Design](../02-conceptual-database-design/README.md)  
+**Related CS403 handout lectures:** Lectures 7–13 — conceptual database design and ER modelling  
+**Task type:** Entity identification, attribute identification, relationship analysis, and ER diagram
+
+> **Course alignment note:** The supplied assignment brief identifies Lab 3–Lab 4 as its coverage. The lecture range above points to the related conceptual-design material in the CS403 theory handout; it does not claim that Lab 3–Lab 4 are the same as Lectures 7–13.
 
 ## Scenario
 
-A university needs to maintain information about students, courses, instructors, departments, and textbooks.
+A university maintains records of students, courses, instructors, departments, and textbooks.
 
-The brief specifies these many-to-many relationships:
+The scenario specifies these relationships:
 
-- A student may register for multiple courses, and a course may have multiple students.
-- An instructor may teach multiple courses, and a course may be taught by multiple instructors.
-- A department may offer multiple courses, and a course may be offered by multiple departments.
-- A course may use multiple textbooks, and a textbook may be used by multiple courses.
+- Each student can register for many courses, and each course can have many students.
+- Each instructor can teach many courses, and each course can be taught by many instructors.
+- Each department can offer many courses, and each course can be offered by many departments.
+- Each course can use many textbooks, and each textbook can be used in many courses.
 
 ## Tasks
 
-1. **Identify entities:** Identify the entity types required by the scenario.
-2. **Identify attributes:** Propose suitable attributes for each entity.
-3. **Identify relationships:** Identify and describe the relationships between the entities.
-4. **Draw the ER diagram:** Produce an ERD based on your work in Tasks 1–3.
+1. **Identify entities.** Identify the entities required by the scenario.
+2. **Identify attributes.** Propose suitable attributes for each entity.
+3. **Identify relationships.** Identify the relationships between the entities.
+4. **Draw the ER diagram.** Create an Entity–Relationship Diagram from the entities, attributes, and relationships identified in Tasks 1–3.
+
+## Modelling notes
+
+The five entity types explicitly named in the scenario are:
+
+- Student
+- Course
+- Instructor
+- Department
+- Textbook
+
+The scenario explicitly describes four many-to-many relationships:
+
+| Relationship | Cardinality stated in the scenario |
+| --- | --- |
+| Student registers for Course | Many-to-many (M:N) |
+| Instructor teaches Course | Many-to-many (M:N) |
+| Department offers Course | Many-to-many (M:N) |
+| Course uses Textbook | Many-to-many (M:N) |
+
+The scenario does **not** provide attributes, identifiers, or additional business rules. You must propose reasonable attributes and identifiers, and state any assumptions you make. Do not present assumptions as facts supplied by the assignment.
+
+For this task, focus on the conceptual ER diagram. If you later convert the design into relational tables, each many-to-many relationship will need an appropriate relational mapping, commonly through an associative table. Do not confuse that implementation step with the conceptual relationship itself; follow the notation required by your instructor.
 
 ## Submission requirements
 
-Submit the final ER diagram by placing it in a Microsoft Word document. The supplied brief states that other file formats will not be accepted and may receive zero marks.
+The supplied brief requires:
 
-Before submitting, check the official assignment portal for the exact upload procedure and deadline.
+- Complete all four tasks.
+- Prepare the final ER diagram.
+- Paste the final ER diagram into a **Microsoft Word document**.
+- Submit the Word document by the stated deadline.
 
-## Modelling checklist
+**Format warning from the supplied brief:** Any other format will not be entertained and will receive zero marks. Treat the Word document requirement as mandatory unless your instructor issues an updated instruction.
 
-- [ ] Include the five entity types named in the scenario: Student, Course, Instructor, Department, and Textbook.
-- [ ] Give each entity a suitable identifier (primary key).
-- [ ] Add attributes that make sense for the scenario.
-- [ ] Represent all four many-to-many relationships.
-- [ ] Label relationships clearly so their meaning is understandable.
-- [ ] Show cardinality using one consistent ER notation.
-- [ ] Make any assumptions explicit.
-- [ ] Check that every relationship in the diagram is supported by the scenario or a clearly stated assumption.
-- [ ] Export or paste a readable final diagram into a Word document (.docx).
+**Deadline in the supplied brief:** 03 November 2026. Confirm the submission portal and any updated deadline with your course instructor/LMS.
 
-## Important modelling notes
+## Suggested Word document structure
 
-### The scenario explicitly gives four many-to-many relationships
+1. Assignment title and student details.
+2. Task 1 — identified entities.
+3. Task 2 — attributes for each entity, with identifiers clearly marked.
+4. Task 3 — relationships and cardinalities.
+5. Task 4 — final ER diagram pasted clearly and legibly.
 
-A relational implementation cannot represent a many-to-many relationship directly with only one foreign key on either of the two participating entity tables. It is normally resolved using an associative entity (also called a junction or bridge entity).
+The brief specifically requires the final ERD to be pasted into Word. The suggested ordering above is a practical way to present all four tasks in one document.
 
-Possible associative-entity names include:
+## Final self-check
 
-| Relationship | Possible associative entity |
-| --- | --- |
-| Student ↔ Course | Registration or Enrollment |
-| Instructor ↔ Course | CourseTeaching or TeachingAssignment |
-| Department ↔ Course | CourseOffering |
-| Course ↔ Textbook | CourseTextbook |
+- [ ] All five scenario entities are represented.
+- [ ] Attributes are listed for every entity.
+- [ ] All four many-to-many relationships are shown.
+- [ ] Identifiers are clear and consistent.
+- [ ] Any additional assumptions are stated.
+- [ ] The ER diagram is readable when viewed in the Word document.
+- [ ] All four tasks are included.
+- [ ] The final file is saved as a Word document (.docx).
 
-These names are suggestions, not names mandated by the brief. Your ERD should make the relationship and its meaning clear.
+## Readiness assessment
 
-### The brief does not provide attributes
-
-You are expected to propose attributes. For example, Student could have a student identifier, name, and email; Course could have a course identifier, title, and credit hours. These are illustrative choices, not facts specified by the assignment. Select appropriate attributes and explain any assumptions.
-
-### Some business rules remain unspecified
-
-The brief says that the relationships are many-to-many, but does not define minimum participation, relationship attributes, or additional rules such as whether a student can register for the same course more than once in different semesters. Do not silently invent these rules. If your model needs them, state your assumptions.
-
-The scenario also does not specify a relationship between Instructor and Department. Do not add one as if it were required; include it only if you clearly identify it as an assumption and can justify it.
-
-## Self-review questions
-
-1. Have you included all five entities and all four relationships from the scenario?
-2. Can your model represent multiple students in a course and multiple courses for a student?
-3. Can it represent multiple instructors per course, and vice versa?
-4. Can a course be offered by more than one department?
-5. Can the same textbook be associated with multiple courses?
-6. Have you selected identifiers and stated assumptions where the brief is silent?
-
-## Final submission reminder
-
-The brief specifies a **Word document (.docx)** containing the final ERD. A standalone image, PDF, or diagram source should not be submitted instead unless the official assignment instructions are updated.
+The assignment brief is sufficiently clear to begin. The main design work is choosing sensible attributes and identifiers because the scenario does not specify them. The four many-to-many relationships are explicit, so their cardinalities are not ambiguous. Make your assumptions visible and check that the ERD matches the written relationship list.

@@ -31,6 +31,11 @@ The ranges are navigation aids. The lecture headings in the official handout rem
 
 The same **university examination system** scenario will be reused where helpful across ER modelling, relational design, normalization, and SQL. This keeps examples connected without introducing unrelated case studies.
 
+## Assignments
+
+- [Assignment 01 — Examination System Design](assignments/assignment-01-examination-system-design.md)
+- [Assignment 02 — University Database ER Diagram](assignments/assignment-02-university-database-erd.md) — supplied brief for Lab 3–Lab 4; requires a Word document containing the final ERD.
+
 ## SQL and database tools
 
 The CS403 theory handout contains examples referring to Microsoft SQL Server 2000 and Query Analyzer. That historical reference does not, by itself, establish the database engine currently required for CS403P practical work.
