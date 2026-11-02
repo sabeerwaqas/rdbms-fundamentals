@@ -91,6 +91,35 @@ Cardinality describes how many instances on one side can be associated with an i
 ### Relationship attributes
 A fact may belong to the association rather than either entity alone. For example, registrationDate describes a student's registration in a particular course, not the student generally or the course generally.
 
+
+### Worked ER diagram — Department and Employee
+
+Consider this separate example with the following business rules:
+- A department may have zero or many employees.
+- Every employee must belong to exactly one department.
+
+~~~mermaid
+erDiagram
+    DEPARTMENT ||--o{ EMPLOYEE : employs
+    DEPARTMENT {
+        int departmentId PK
+        string departmentName
+    }
+    EMPLOYEE {
+        int employeeId PK
+        string employeeName
+        int departmentId
+    }
+~~~
+
+Read the symbols from the relationship ends:
+- `||` means exactly one.
+- `o{` means zero or many.
+
+So one department can be related to multiple employees, while each employee is related to exactly one department. The rules above are assumptions for this example, not universal rules for every organization.
+
+Try changing the rule to allow employees who are not assigned to a department. Which end of the relationship would need optional participation?
+
 ## Lecture 10 — Minimum cardinality, roles, and dependencies
 
 ### Maximum and minimum cardinality
