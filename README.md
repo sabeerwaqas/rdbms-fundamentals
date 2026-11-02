@@ -50,6 +50,7 @@ For that reason, SQL explanations will distinguish database concepts from vendor
 - [x] Course-ordered repository structure and lecture map
 - [x] Initial notes for database fundamentals
 - [x] First original design assignment
+- [x] Assignment 02 study guide for the supplied Lab 3–Lab 4 brief
 - [ ] Complete conceptual design and ER modelling notes
 - [ ] Complete relational model and normalization walkthroughs
 - [ ] Add physical design, SQL, storage, indexing, views, and transaction examples

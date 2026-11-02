@@ -21,9 +21,10 @@ This section follows the handout's treatment of conceptual database design and E
 5. State assumptions when the scenario does not define a business rule.
 6. Check the model against the required outputs. Revise it if a required output cannot be produced from the model.
 
-## Practice direction
+## Practice assignments
 
-Use the university examination-system scenario from [Assignment 01](../assignments/assignment-01-examination-system-design.md). Identify candidate entities and relationships, draw an ER diagram, state assumptions, and validate the design against example information requests.
+- [Assignment 01 — Examination System Design](../assignments/assignment-01-examination-system-design.md) asks you to develop an ER model from a university examination-system scenario.
+- [Assignment 02 — University Database ER Diagram](../assignments/assignment-02-university-database-erd.md) practises entity, attribute, relationship, and ERD identification for a university database with four many-to-many relationships.
 
 ## Completion checklist
 
