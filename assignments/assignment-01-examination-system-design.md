@@ -15,6 +15,10 @@
 
 Study the relevant explanations and worked examples before attempting the tasks. The case study is a reference for the modelling process; your design should still follow the requirements and assumptions you state for this assignment.
 
+## Learn the ERD symbols before drawing
+
+Review [Learn the ERD symbols gradually](../02-conceptual-database-design/README.md#learn-the-erd-symbols-gradually), especially entity rectangles, attribute ovals, underlined key attributes, relationship diamonds, and cardinality notation.
+
 ## Scenario
 
 A university needs to organize information about students, academic programs, courses, teachers, semesters, course offerings, registrations, and examination results.
