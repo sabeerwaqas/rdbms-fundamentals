@@ -5,6 +5,16 @@
 **Type:** Original practice assignment  
 **Database engine:** Not required
 
+## Relevant CS403 learning material
+
+- [Lectures 7 — Entities and Attributes](../02-conceptual-database-design/README.md#lecture-7--entities-and-attributes)
+- [Lecture 8 — Keys](../02-conceptual-database-design/README.md#lecture-8--keys)
+- [Lecture 9 — Relationships](../02-conceptual-database-design/README.md#lecture-9--relationships)
+- [Lecture 10 — Cardinality, Roles, and Dependencies](../02-conceptual-database-design/README.md#lecture-10--minimum-cardinality-roles-and-dependencies)
+- [Lectures 12–13 — Examination-System Case Study](../02-conceptual-database-design/README.md#lectures-12-13--examination-system-case-study)
+
+Study the relevant explanations and worked examples before attempting the tasks. The case study is a reference for the modelling process; your design should still follow the requirements and assumptions you state for this assignment.
+
 ## Scenario
 
 A university needs to organize information about students, academic programs, courses, teachers, semesters, course offerings, registrations, and examination results.
