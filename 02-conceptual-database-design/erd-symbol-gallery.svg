@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="1200" height="760" fill="#f8fafc" rx="24"/>
+<text x="60" y="64" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#172554">Chen ERD symbol gallery</text>
+<text x="60" y="96" font-family="Arial,sans-serif" font-size="16" fill="#475569">Each symbol communicates a different part of a conceptual data model.</text>
+<g font-family="Arial,sans-serif" fill="#0f172a" stroke="#2563eb" stroke-width="3">
+<rect x="55" y="145" width="220" height="115" rx="8" fill="#fff"/><text x="165" y="210" text-anchor="middle" stroke="none" font-size="21" font-weight="700">STUDENT</text>
+<rect x="355" y="145" width="220" height="115" rx="8" fill="#fff"/><rect x="364" y="154" width="202" height="97" rx="4" fill="none"/><text x="465" y="210" text-anchor="middle" stroke="none" font-size="21" font-weight="700">DEPENDENT</text>
+<ellipse cx="765" cy="202" rx="110" ry="48" fill="#fff"/><text x="765" y="209" text-anchor="middle" stroke="none" font-size="20">email</text>
+<ellipse cx="1060" cy="202" rx="110" ry="48" fill="#fff"/><text x="1060" y="209" text-anchor="middle" stroke="none" font-size="20">student_id</text><path d="M1000 220 H1120" fill="none" stroke="#0f172a" stroke-width="2"/>
+<polygon points="165,360 280,425 165,490 50,425" fill="#fff"/><text x="165" y="433" text-anchor="middle" stroke="none" font-size="19">REGISTERS</text>
+<polygon points="465,360 580,425 465,490 350,425" fill="#fff"/><polygon points="465,370 562,425 465,480 368,425" fill="none"/><text x="465" y="433" text-anchor="middle" stroke="none" font-size="19">IDENTIFIES</text>
+<ellipse cx="765" cy="425" rx="110" ry="48" fill="#fff"/><ellipse cx="765" cy="425" rx="101" ry="39" fill="none"/><text x="765" y="432" text-anchor="middle" stroke="none" font-size="19">phone_number</text>
+<ellipse cx="1060" cy="425" rx="110" ry="48" fill="#fff" stroke-dasharray="9 7"/><text x="1060" y="432" text-anchor="middle" stroke="none" font-size="19">age</text>
+</g>
+<g font-family="Arial,sans-serif" fill="#172554">
+<text x="165" y="295" text-anchor="middle" font-size="19" font-weight="700">Entity</text><text x="165" y="320" text-anchor="middle" font-size="15" fill="#475569">Single rectangle</text>
+<text x="465" y="295" text-anchor="middle" font-size="19" font-weight="700">Weak entity</text><text x="465" y="320" text-anchor="middle" font-size="15" fill="#475569">Double rectangle</text>
+<text x="765" y="295" text-anchor="middle" font-size="19" font-weight="700">Attribute</text><text x="765" y="320" text-anchor="middle" font-size="15" fill="#475569">Single oval</text>
+<text x="1060" y="295" text-anchor="middle" font-size="19" font-weight="700">Key attribute</text><text x="1060" y="320" text-anchor="middle" font-size="15" fill="#475569">Underlined name</text>
+<text x="165" y="535" text-anchor="middle" font-size="19" font-weight="700">Relationship</text><text x="165" y="560" text-anchor="middle" font-size="15" fill="#475569">Single diamond</text>
+<text x="465" y="535" text-anchor="middle" font-size="19" font-weight="700">Identifying relationship</text><text x="465" y="560" text-anchor="middle" font-size="15" fill="#475569">Double diamond</text>
+<text x="765" y="535" text-anchor="middle" font-size="19" font-weight="700">Multivalued attribute</text><text x="765" y="560" text-anchor="middle" font-size="15" fill="#475569">Double oval</text>
+<text x="1060" y="535" text-anchor="middle" font-size="19" font-weight="700">Derived attribute</text><text x="1060" y="560" text-anchor="middle" font-size="15" fill="#475569">Dashed oval</text>
+</g>
+<rect x="55" y="620" width="1090" height="90" rx="14" fill="#e0ecff"/>
+<text x="85" y="658" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#1e3a8a">Remember</text>
+<text x="85" y="687" font-family="Arial,sans-serif" font-size="17" fill="#1e3a8a">Rectangles identify things • Ovals describe them • Diamonds connect them</text>
+</svg>
