@@ -37,7 +37,7 @@ Each section includes its handout lecture range, essential concepts, examples, a
 - [Assignment 01 — Examination System Design](assignments/assignment-01-examination-system-design.md)
 - [Assignment 02 — University Database ER Diagram](assignments/assignment-02-university-database-erd.md)
 
-Assignments link back to the relevant learning material. For Assignment 02, study Lectures 7–10 in the conceptual-design section before drawing the ERD.
+Assignments link back to the relevant learning material. For ERD assignments, first study the [ERD symbol guide](02-conceptual-database-design/README.md#learn-the-erd-symbols-gradually), then study Lectures 7–10 in the conceptual-design section before drawing the diagram.
 
 ## SQL environment
 
