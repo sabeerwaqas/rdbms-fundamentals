@@ -5,6 +5,114 @@
 
 This section teaches the steps needed to understand and draw an Entity–Relationship Diagram (ERD). Study it in order.
 
+## Learn the ERD symbols gradually
+
+Before drawing a full ERD, learn what each shape communicates. The symbols below follow the traditional Chen-style notation used in many introductory database courses. If your VU lab instructor specifies a different notation, use the required one consistently.
+
+### Step 1 — Draw an entity as a rectangle
+
+An entity type is shown with a **single rectangle**.
+
+```text
++-----------+
+|  STUDENT  |
++-----------+
+```
+
+Read this as: STUDENT is a type of thing the database stores information about. COURSE, INSTRUCTOR, DEPARTMENT, and TEXTBOOK can also be entity types.
+
+### Step 2 — Attach attributes as ovals
+
+An attribute is shown as an **oval connected to its entity**.
+
+```text
+                 ( studentName )
+                       |
++-----------+          |
+|  STUDENT  |----------+
++-----------+
+```
+
+A student may have attributes such as registration number, name, and email. The oval is not another entity; it describes the entity.
+
+### Step 3 — Mark the key attribute
+
+A key attribute is shown by **underlining its name inside the oval**.
+
+```text
+             ( regNo )  <-- underline regNo in your ERD
+                 |
+          +-----------+
+          |  STUDENT  |
+          +-----------+
+```
+
+The underline tells the reader that regNo identifies a STUDENT instance. Do not underline an attribute merely because it seems important; it must uniquely identify an instance under the stated rules.
+
+### Step 4 — Show a relationship with a diamond
+
+A relationship is shown as a **diamond**, connected to the participating entity rectangles.
+
+```text
++-----------+       /----------\       +----------+
+|  STUDENT  |-------< registers >-------|  COURSE  |
++-----------+       \----------/       +----------+
+```
+
+The diamond names the association. Here, registers connects STUDENT and COURSE. Add cardinality information using the notation your course requires; the diamond alone does not tell you whether the relationship is 1:1, 1:M, or M:N.
+
+### Step 5 — Recognize a weak entity
+
+A weak entity is shown with a **double rectangle**. It cannot be uniquely identified or exist independently in the same way as a strong entity; it depends on an owner entity.
+
+```text
++-----------+       << double rectangle >>
+| EMPLOYEE  |       +====================+
++-----------+       || DEPENDENT        ||
+                    +====================+
+```
+
+For example, a DEPENDENT record may be identified in the context of the EMPLOYEE it belongs to. The exact identifying attributes and participation rules must come from the requirements.
+
+### Step 6 — Learn the special attribute shapes
+
+| Attribute kind | Traditional ERD symbol | What it communicates |
+|---|---|---|
+| Simple | Single oval | One indivisible attribute |
+| Composite | One main oval connected to component ovals | Attribute has meaningful parts, e.g. address → street, city |
+| Multi-valued | Double oval | An entity may have several values, e.g. phone numbers |
+| Derived | Dashed oval | Calculated from other stored data, e.g. age from date of birth |
+| Key | Attribute name underlined in oval | Identifies an entity instance |
+
+A composite attribute is still one attribute with component parts. A multi-valued attribute is not the same as a composite attribute.
+
+### Step 7 — Weak entity's identifying relationship
+
+In traditional Chen notation, the relationship that identifies a weak entity is shown with a **double diamond**. The weak entity itself is shown with a double rectangle. Do not confuse the two symbols: one represents the dependent entity; the other represents the identifying relationship.
+
+```text
++-----------+       << double diamond >>       +================+
+| EMPLOYEE  |==================================|| DEPENDENT     ||
++-----------+                                   +================+
+```
+
+### Quick symbol checklist
+
+Before submitting an ERD, check that:
+- Entity types use rectangles.
+- Weak entity types use double rectangles.
+- Attributes use ovals.
+- Key attributes are underlined.
+- Multi-valued attributes use double ovals.
+- Derived attributes use dashed ovals.
+- Relationships use diamonds.
+- Identifying relationships for weak entities use double diamonds.
+- Lines connect the correct shapes and the diagram is readable.
+
+**Important:** These are Chen-style symbols. Crow's-foot diagrams use a different visual convention for relationships and cardinalities. Do not mix the two notations in one diagram unless your instructor explicitly asks you to.
+
+---
+
 ## Lecture 7 — Entities and attributes
 
 ### What is an ER model?
