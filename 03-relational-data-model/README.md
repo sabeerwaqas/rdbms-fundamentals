@@ -1,28 +1,87 @@
 # 03 — Logical Database Design and the Relational Data Model
 
-**Handout coverage:** Lectures 14–18
+**VU CS403 handout:** Lectures 14–18
 
-The handout moves from conceptual design to logical database design in this section, then introduces the relational data model.
+## 1. Conceptual versus logical design
 
-## Topics
+| Conceptual design | Logical design |
+|---|---|
+| Describes required information and relationships | Describes the structure using a selected data model |
+| Commonly represented with an ER model | In this course, developed using the relational data model |
+| Independent of a specific DBMS | Uses a data model that can later be implemented |
 
-- Purpose of logical database design and how it differs from conceptual design.
-- Relations (tables), tuples (rows), attributes (columns), and domains.
-- Properties of relations and the mathematical idea behind a relation.
-- Keys and integrity constraints.
-- Mapping a conceptual design into a relational structure.
-- Relational operations introduced in this part of the handout.
+An ER diagram is not yet a set of SQL tables. Mapping it into relations is a separate design step.
 
-## From ER model to relations
+## 2. Relational data model
 
-For each entity, identify the relation and its attributes. Select a key that identifies each row. Then translate relationships into relational structures, using foreign keys or associative relations where the relationship requires them. The mapping should preserve the meaning and constraints of the conceptual model.
+The relational data model represents data using **relations**, commonly displayed as tables.
 
-## Practice direction
+- Relation: logical table structure.
+- Tuple: one row.
+- Attribute: one column.
+- Domain: permitted values for an attribute.
+- Degree of a relation: number of columns.
+- Cardinality of a relation: number of rows.
 
-Take a small ER model and convert it into relations. For every relation, identify its attributes, candidate key, primary key, and foreign keys. Explain how the selected constraints protect the data.
+Do not confuse relation degree/cardinality with ER relationship degree/cardinality.
 
-## Completion checklist
+## 3. Basic properties of a relation
 
-- [ ] Concise notes using the handout's terminology.
-- [ ] One ER-to-relational mapping walkthrough.
-- [ ] Exercises on relation properties, keys, constraints, and relational operations.
+The handout discusses these key properties:
+- Each relation has a distinct name.
+- Each cell contains a single value from its domain.
+- Values in a column belong to the same domain.
+- Duplicate tuples are not part of the mathematical definition of a relation.
+- Row order has no logical significance.
+- Column order has no logical significance in a database relation.
+
+## 4. Integrity
+
+- **Entity integrity:** a primary key uniquely identifies a row and cannot be NULL.
+- **Referential integrity:** a foreign-key value refers to an existing key in the referenced relation, subject to permitted NULL rules.
+- **Domain integrity:** values belong to the defined domain.
+
+## 5. Mapping ER relationships to relations
+
+- **1:M:** place the primary key from the one-side relation as a foreign key in the many-side relation.
+- **M:N:** create an associative relation containing the keys of the participating relations. These keys commonly form a composite primary key; relationship attributes can also be stored there.
+- **1:1:** place a foreign key on an appropriate side, considering participation and optionality.
+
+### Worked example — Student and Course
+
+Conceptual relationship: a student can register for many courses, and a course can have many students.
+
+~~~text
+STUDENT(regNo, studentName)
+COURSE(courseCode, courseName)
+ENROLLMENT(regNo, courseCode, registrationDate)
+~~~
+
+- STUDENT.regNo identifies a student.
+- COURSE.courseCode identifies a course.
+- ENROLLMENT.regNo references STUDENT.
+- ENROLLMENT.courseCode references COURSE.
+- (regNo, courseCode) identifies one student-course registration if each student can register for a course only once in this model.
+- registrationDate describes the registration, so it belongs in ENROLLMENT.
+
+Check the uniqueness assumption against system rules; if repeated attempts are recorded, the key needs an attempt/term identifier.
+
+## 6. Relational operations
+
+The handout introduces mathematical/database relations and operations including Cartesian product and joins.
+
+- **Cartesian product:** pairs every tuple from one relation with every tuple from another. If A has 2 rows and B has 3 rows, A × B has 6 row combinations.
+- **Join:** combines related tuples using a condition. It retrieves information stored across multiple relations.
+
+A join is not the same as a Cartesian product, although a Cartesian product followed by a selection condition can express a join.
+
+## Practice
+
+1. A relation has 4 columns and 12 rows. State its degree and cardinality.
+2. Why does row order not define a relation?
+3. Map a 1:M Department–Employee relationship.
+4. Map a M:N Student–Course relationship with an enrollment date.
+5. If A has 4 tuples and B has 5 tuples, how many tuples are in A × B?
+
+## Next
+[04 — Normalization](../04-normalization/README.md).

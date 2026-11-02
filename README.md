@@ -1,70 +1,64 @@
 # RDBMS Fundamentals
 
-A focused study resource for the **Virtual University of Pakistan – CS403: Database Management System** handout.
+A focused, beginner-friendly learning resource for **Virtual University of Pakistan — CS403: Database Management System**.
 
-This repository is intended to help students understand relational database fundamentals through concise notes, worked examples, diagrams, and original practice tasks. It is not a replacement for the official course material and is not affiliated with Virtual University.
+The goal is not to collect every database topic on the internet. It is to help a student study the course in order, understand each core concept, work through examples, and practise before attempting assignments.
 
-## What this repository covers
+This repository is an independent student learning resource and is not affiliated with Virtual University.
 
-The content follows the handout's lecture order rather than imposing a separate, generic database curriculum.
+## How to use this repository
 
-| Handout lectures | Topic | Section |
-| --- | --- | --- |
-| 1–6 | Database fundamentals and development process | [01 – Database Fundamentals](01-database-fundamentals/README.md) |
-| 7–13 | Conceptual database design | [02 – Conceptual Database Design](02-conceptual-database-design/README.md) |
-| 14–18 | Logical database design and relational data model | [03 – Relational Data Model](03-relational-data-model/README.md) |
-| 19–21 | Normalization | [04 – Normalization](04-normalization/README.md) |
-| 22–24 | Physical database design | [05 – Physical Database Design](05-physical-database-design/README.md) |
-| 25–31 | Structured Query Language (SQL) | [06 – SQL](06-sql/README.md) |
-| 32–34 | Application programs, user interfaces, and forms | [07 – Database Applications](07-database-applications/README.md) |
-| 35–38 | Storage, file organization, hashing, and indexes | [08 – Storage and Indexing](08-storage-and-indexing/README.md) |
-| 39–45 | Views and transaction management | [09 – Views and Transactions](09-views-and-transactions/README.md) |
+If you are starting from zero, follow the sections in order:
 
-The ranges are navigation aids. The lecture headings in the official handout remain the authority for the exact coverage of an individual lecture.
+1. Read the concept explanations.
+2. Work through the examples yourself on paper or in a diagramming tool.
+3. Answer the practice questions without looking back.
+4. Attempt the linked assignment only after you can explain the relevant concepts.
+5. Continue when you can solve the practice tasks.
 
-## How to study with it
+Each section includes its handout lecture range, essential concepts, examples, and practice. The [roadmap](ROADMAP.md) tracks remaining improvements.
 
-1. Open the section matching your current lecture.
-2. Read the explanation and inspect the worked example, when available.
-3. Attempt the practice questions before checking any solution.
-4. Use the [assignments](assignments/README.md) to connect concepts across sections.
+## Course map
 
-The same **university examination system** scenario will be reused where helpful across ER modelling, relational design, normalization, and SQL. This keeps examples connected without introducing unrelated case studies.
+| Handout lectures | Topic | Learning material |
+|---|---|---|
+| 1–6 | Database fundamentals and development process | [01 — Database Fundamentals](01-database-fundamentals/README.md) |
+| 7–13 | Conceptual database design and ER modelling | [02 — Conceptual Database Design](02-conceptual-database-design/README.md) |
+| 14–18 | Logical database design and relational data model | [03 — Relational Data Model](03-relational-data-model/README.md) |
+| 19–21 | Normalization | [04 — Normalization](04-normalization/README.md) |
+| 22–24 | Physical database design | [05 — Physical Database Design](05-physical-database-design/README.md) |
+| 25–31 | SQL | [06 — SQL](06-sql/README.md) |
+| 32–34 | Database applications and user interfaces | [07 — Database Applications](07-database-applications/README.md) |
+| 35–38 | Storage, hashing, and indexing | [08 — Storage and Indexing](08-storage-and-indexing/README.md) |
+| 39–45 | Views and transaction management | [09 — Views and Transactions](09-views-and-transactions/README.md) |
 
 ## Assignments
 
 - [Assignment 01 — Examination System Design](assignments/assignment-01-examination-system-design.md)
-- [Assignment 02 — University Database ER Diagram](assignments/assignment-02-university-database-erd.md) — supplied brief for Lab 3–Lab 4; requires a Word document containing the final ERD.
+- [Assignment 02 — University Database ER Diagram](assignments/assignment-02-university-database-erd.md)
 
-## SQL and database tools
+Assignments link back to the relevant learning material. For Assignment 02, study Lectures 7–10 in the conceptual-design section before drawing the ERD.
 
-The CS403 theory handout contains examples referring to Microsoft SQL Server 2000 and Query Analyzer. That historical reference does not, by itself, establish the database engine currently required for CS403P practical work.
+## SQL environment
 
-For that reason, SQL explanations will distinguish database concepts from vendor-specific syntax. Executable scripts will be added only after the current CS403P lab environment is confirmed. Each script must state the database engine and version against which it was tested.
+The CS403 theory handout includes historical Microsoft SQL Server 2000 / Query Analyzer examples. That does not establish which database engine is currently required in CS403P. Executable SQL examples must state the engine/version and should be added only after current lab requirements are confirmed.
 
-## Project scope and content policy
+## Content principles
 
-- Follow the handout's topic order.
-- Prefer one clear explanation and one useful example over repeated material.
-- Keep practice questions close to the section they reinforce.
-- Publish original explanations and exercises; do not upload the copyrighted handout or reproduce official assignment text.
-- Mark planned content as planned. A section outline is not the same as completed study notes.
+- Follow the VU handout's lecture order.
+- Explain only concepts needed for the course and its assignments.
+- Use original explanations and examples; do not republish the copyrighted handout.
+- Distinguish handout-derived topics from additional illustrative examples.
+- Never mark untested SQL as tested.
+- Keep assignment requirements separate from suggested study guidance.
 
 ## Progress
 
-- [x] Course-ordered repository structure and lecture map
-- [x] Initial notes for database fundamentals
-- [x] First original design assignment
-- [x] Assignment 02 study guide for the supplied Lab 3–Lab 4 brief
-- [ ] Complete conceptual design and ER modelling notes
-- [ ] Complete relational model and normalization walkthroughs
-- [ ] Add physical design, SQL, storage, indexing, views, and transaction examples
-
-See [ROADMAP.md](ROADMAP.md) for the planned sequence and completion criteria.
+Initial beginner-focused learning guides now cover the core concepts across all nine lecture groups. Worked practice, verified diagrams, and tested SQL scripts will continue to be improved. See [ROADMAP.md](ROADMAP.md).
 
 ## Contributing
 
-Corrections, clearer explanations, and focused practice questions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing corrections or examples.
 
 ## License
 

@@ -1,26 +1,35 @@
 # 07 — Database Applications
 
-**Handout coverage:** Lectures 32–34
+**VU CS403 handout:** Lectures 32–34
 
-This section preserves the handout's coverage of the application layer that uses the database.
+This section covers application programs and user interfaces through which people interact with a database.
 
-## Topics
+## 1. Database and application
 
-- The role of application programs in a database system.
-- Common application activities such as data input, editing, display, processing, and reporting.
-- User-interface considerations.
-- Basic form-design considerations.
+The DBMS stores and manages data. The application provides user workflows such as adding a student, registering a student in a course, searching for a result, or producing a transcript.
 
-## How the application relates to the database
+The application should validate input and guide users. Database constraints remain important because data may be changed through more than one application path.
 
-An application provides operations that users need, while the DBMS manages the stored data. For a simple data-entry workflow, the application collects input, validates it, requests an appropriate database operation, and presents the result or an error to the user.
+## 2. User interface design
 
-## Practice direction
+The handout discusses interfaces for users with different experience levels and gives usability guidance. A usable interface should:
+- Make actions easy to discover.
+- Use consistent controls and terminology.
+- Help users understand the current task.
+- Reduce unnecessary memory burden.
+- Be designed around the user's process rather than exposing raw database structures.
 
-Sketch a simple data-entry form for one entity in the examination-system scenario. Identify required fields, validation rules, and the database operation triggered when the form is submitted.
+## 3. Forms and controls
 
-## Completion checklist
+A form is a user-facing way to enter, view, or edit related information. Controls may include text boxes, buttons, checkboxes, and date fields.
 
-- [ ] Concise notes for application programs and interfaces.
-- [ ] One annotated form example.
-- [ ] Practice questions connecting the user interface to database operations.
+Example: a course registration form may contain student registration number, course selection, semester, and a submit button.
+
+The form should make required fields clear and prevent obviously invalid input. The application must still handle database errors such as duplicate registrations or invalid references.
+
+## Practice
+
+Sketch a course-registration form. Label its fields, identify required input, describe validation, and explain what should happen if the student is already registered.
+
+## Next
+[08 — Storage and Indexing](../08-storage-and-indexing/README.md).

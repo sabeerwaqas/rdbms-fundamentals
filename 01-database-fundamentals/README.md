@@ -1,47 +1,72 @@
 # 01 — Database Fundamentals
 
-**Handout coverage:** Lectures 1–6
+**VU CS403 handout:** Lectures 1–6
 
-This section introduces databases and DBMSs, explains why organizations use database systems, and places database design in the wider development process.
+## 1. Data, information, database, and DBMS
 
-## Learning goals
+- **Data:** recorded facts, such as a student's registration number or course code.
+- **Information:** data processed to answer a question, such as a list of students registered in a course.
+- **Database:** an organized collection of related data.
+- **DBMS:** software used to define, store, retrieve, update, and control access to a database.
 
-After studying this section, you should be able to:
+A database is the stored collection; a DBMS is the software that manages it.
 
-- Distinguish data from information and explain the role of a database schema.
-- Describe the purpose of a DBMS and compare file processing with the database approach.
-- Explain important benefits and costs of using a DBMS.
-- Identify database users and describe the levels of database architecture covered in the handout.
-- Outline the database application development process and explain the purpose of data-flow diagrams.
+## 2. File processing and the database approach
 
-## Core concepts
+Separate file-based applications can store the same fact in multiple places. This creates:
+- **Redundancy:** repeated copies of the same fact.
+- **Inconsistency:** copies disagree after an incomplete update.
+- **Isolation:** combining data across unrelated formats is difficult.
+- **Integrity problems:** rules are hard to enforce consistently.
+- **Access/security problems:** controlling who can see or change information is harder.
 
-### Data, information, and schema
+A DBMS provides shared data management, constraints, controlled access, concurrent use, and recovery facilities. It also introduces costs: software, hardware, administration, maintenance, training, and operational complexity.
 
-**Data** consists of recorded facts. **Information** is data processed or interpreted so that it has meaning for a particular purpose. A **schema** describes the structure and organization of a database; it is not the actual collection of business facts.
+## 3. Three levels of database architecture
 
-### Database and DBMS
+- **External level:** how a particular user or application sees data.
+- **Conceptual level:** the overall logical structure of the database.
+- **Internal level:** how data is physically stored.
 
-A **database** is an organized collection of related data. A **database management system (DBMS)** is software used to define, store, retrieve, update, and manage that data, including controlling access to it.
+Separation between levels supports data independence: some changes to storage or logical structure can be made without forcing every user view or application to change. These levels are not the same as the stages of database design.
 
-A database and a DBMS are not the same thing: one is the data being managed, and the other is the software that manages it.
+## 4. Development process and analysis
 
-### Why use a DBMS?
+The handout describes database design, application programs, and implementation as major parts of database application development. Preliminary study and analysis help establish what users need.
 
-The database approach can support controlled data sharing, reduced unnecessary duplication, integrity, security, and data independence. It also introduces costs such as software, hardware, administration, maintenance, training, and operational complexity. Whether a DBMS is appropriate depends on the needs of the system.
+A practical analysis sequence:
+1. Identify people/systems interacting with the proposed system.
+2. Understand the information they provide and require.
+3. Model data movement using Data Flow Diagrams (DFDs).
+4. Examine required reports and outputs.
+5. Identify facts that must be stored before creating the database design.
 
-### Development process
+A **DFD** describes processes, external entities, data flows, and data stores. It shows how information moves; it is not an ER diagram and does not define database tables.
 
-The handout introduces database application development through database design, application programs, and implementation. These activities can overlap rather than always being performed as isolated stages. Data-flow diagrams help represent how data moves through a system and support the analysis that precedes design.
+A **cross-reference matrix** relates data items to required reports. It helps identify which facts are needed and can help discover candidate entities and attributes.
+
+## Worked example — University result system
+
+Students need semester result cards and transcripts, teachers submit marks, and the examination office produces class results.
+
+- External participants include students, teachers, and the examination office.
+- Processes include result submission and result calculation.
+- Outputs include result cards, transcripts, and class results.
+- Stored data may include student identity, course information, semester information, and marks/results.
+
+The DFD describes information flow. The outputs help determine what data must be stored. The ER model is developed later.
 
 ## Check your understanding
 
-1. Explain the difference between data, information, a database, and a DBMS.
-2. Give two examples of problems that controlled redundancy can help prevent.
-3. Why does data independence matter to an application that uses a database?
-4. Name two costs an organization should consider before adopting a DBMS.
-5. What does a data-flow diagram help an analyst understand?
+1. How is a DBMS different from a database?
+2. Give an example of redundancy and inconsistency in a student record system.
+3. Distinguish external, conceptual, and internal levels.
+4. What does a DFD show that an ER diagram does not?
+5. How can a cross-reference matrix help identify data requirements?
 
 ## Practice
 
-Choose a familiar system, such as a library, clinic, or university registration system. List the data it needs to store, identify two groups of users, and describe three operations those users need to perform. Then explain why a database approach may be suitable.
+Choose a university registration or result system. Write down two user groups, three processes, three required outputs, and the data items needed to produce those outputs. Do not draw tables yet; this is requirements analysis.
+
+## Next
+[02 — Conceptual Database Design](../02-conceptual-database-design/README.md).

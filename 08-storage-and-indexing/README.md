@@ -1,27 +1,45 @@
 # 08 — Storage, Hashing, and Indexing
 
-**Handout coverage:** Lectures 35–38
+**VU CS403 handout:** Lectures 35–38
 
-This section covers the storage and access topics grouped in this part of the handout.
+This section explains how records can be organized and how a DBMS can locate them efficiently.
 
-## Topics
+## 1. File organization
 
-- File organization and the way records are stored.
-- Hashing and collision handling.
-- Indexes and their purpose in supporting data retrieval.
-- Index classifications discussed in the handout, including clustered/non-clustered, dense/sparse, and primary/secondary distinctions where applicable.
-- Composite search keys.
+A database stores records in files/pages managed by the DBMS. File organization affects how records are located, inserted, and scanned. The appropriate approach depends on access patterns and update workload.
 
-## Key trade-off
+## 2. Hashing
 
-An index can provide a faster access path for selected queries, but it also consumes storage and may add work when data is inserted, updated, or deleted. Indexes should be discussed in terms of the access patterns they support, not as an automatic improvement for every column.
+Hashing applies a hash function to a search-key value to determine a bucket where the record or data entry can be found.
 
-## Practice direction
+- **Bucket:** a storage location for records/data entries.
+- **Hash function:** maps a key value to a bucket.
+- **Collision:** different key values map to the same bucket.
+- **Collision handling:** a method for storing/finding entries when a bucket is occupied or full.
 
-Compare a table scan with an indexed lookup. Then work through a small hashing example and show how a collision is handled. Explain the storage and update overhead that comes with indexes.
+Hash-based access is useful for equality lookups. It is not generally suitable for ordered range queries because hash values do not preserve key order.
 
-## Completion checklist
+## 3. Indexes
 
-- [ ] Notes on file organization and hashing.
-- [ ] One worked collision-handling example.
-- [ ] One index-classification comparison and practice questions.
+An index is an auxiliary structure that helps find rows without scanning the entire table. Its search key is the attribute or attributes used to locate entries; it does not have to be unique.
+
+Example: an index on studentId can help find a student by registration number. An index on city can help search for students in a city even though many students may share that value.
+
+## 4. Index trade-offs
+
+Indexes can reduce lookup work, but they consume storage, need maintenance when data changes, and may slow inserts, updates, and deletes. An index is useful when it supports relevant query patterns.
+
+## 5. Index classifications
+
+The handout discusses index classification. Study the distinctions covered in Lectures 37–38, including primary/secondary, clustered/non-clustered, dense/sparse, and single-field/composite search keys. These labels describe different properties; they are not all mutually exclusive categories.
+
+## Practice
+
+1. Explain a hash collision using two keys mapped to the same bucket.
+2. Why are hash files suited to equality lookup but not range lookup?
+3. Give an example of a non-unique search key.
+4. Name two costs of maintaining an index.
+5. Why is indexing every column not automatically a good design?
+
+## Next
+[09 — Views and Transactions](../09-views-and-transactions/README.md).
