@@ -5,111 +5,245 @@
 
 This section teaches the steps needed to understand and draw an Entity–Relationship Diagram (ERD). Study it in order.
 
-## Learn the ERD symbols gradually
+## Interactive Chen ERD symbol guide
 
-Before drawing a full ERD, learn what each shape communicates. The symbols below follow the traditional Chen-style notation used in many introductory database courses. If your VU lab instructor specifies a different notation, use the required one consistently.
+This guide uses **Chen notation**, a conceptual ERD notation taught in many introductory database courses. Select each symbol below to expand its explanation, use case, and a practical example. The visual gallery gives you a quick reference.
 
-### Step 1 — Draw an entity as a rectangle
+![Chen ERD symbol gallery](erd-symbol-gallery.svg)
 
-An entity type is shown with a **single rectangle**.
+> **The basic idea:** rectangles identify the things we store data about, ovals describe those things, and diamonds show how those things are associated.
 
-```text
-+-----------+
-|  STUDENT  |
-+-----------+
-```
+### 1. Entity — single rectangle
 
-Read this as: STUDENT is a type of thing the database stores information about. COURSE, INSTRUCTOR, DEPARTMENT, and TEXTBOOK can also be entity types.
+<details>
+<summary><strong>Open: Entity rectangle</strong> · What does it represent?</summary>
 
-### Step 2 — Attach attributes as ovals
+An **entity type** is a category of real-world object, person, place, event, or concept that the database needs to keep information about.
 
-An attribute is shown as an **oval connected to its entity**.
+Examples in a university system: STUDENT, COURSE, INSTRUCTOR, DEPARTMENT, TEXTBOOK.
 
-```text
-                 ( studentName )
-                       |
-+-----------+          |
-|  STUDENT  |----------+
-+-----------+
-```
+**Why a rectangle?** It gives each entity type a clear boundary in the model. Attributes and relationships can then be connected to the correct entity.
 
-A student may have attributes such as registration number, name, and email. The oval is not another entity; it describes the entity.
+**How to decide:** Ask, “Does the system need to remember multiple instances of this thing and facts about each instance?” If yes, it may be an entity.
 
-### Step 3 — Mark the key attribute
+**Example:** STUDENT is the entity type; student VU-1024 is one entity instance.
 
-A key attribute is shown by **underlining its name inside the oval**.
+**Common mistake:** Drawing student_name as an entity. A name describes a student, so it is an attribute, not a separate entity in this simple model.
+</details>
 
-```text
-             ( regNo )  <-- underline regNo in your ERD
-                 |
-          +-----------+
-          |  STUDENT  |
-          +-----------+
-```
+### 2. Weak entity — double rectangle
 
-The underline tells the reader that regNo identifies a STUDENT instance. Do not underline an attribute merely because it seems important; it must uniquely identify an instance under the stated rules.
+<details>
+<summary><strong>Open: Weak entity</strong> · When is an entity dependent?</summary>
 
-### Step 4 — Show a relationship with a diamond
+A **weak entity type** cannot be uniquely identified by its own attributes alone. It is identified in the context of an owner (strong) entity, usually using the owner's key plus a **partial key** belonging to the weak entity.
 
-A relationship is shown as a **diamond**, connected to the participating entity rectangles.
+**Example:** DEPENDENT belongs to an EMPLOYEE. Two employees may each have a dependent named Ali. dependent_name alone is not globally unique; a possible identifier is (employee_id, dependent_name).
 
-```text
-+-----------+       /----------\       +----------+
-|  STUDENT  |-------< registers >-------|  COURSE  |
-+-----------+       \----------/       +----------+
-```
+**Why a double rectangle?** It distinguishes the dependent entity type from a regular strong entity.
 
-The diamond names the association. Here, registers connects STUDENT and COURSE. Add cardinality information using the notation your course requires; the diamond alone does not tell you whether the relationship is 1:1, 1:M, or M:N.
+**Use it when:** the requirements establish identifier dependency on an owner entity. Weak does not simply mean “less important” or “optional”.
 
-### Step 5 — Recognize a weak entity
+**Common mistake:** Calling every entity with a foreign key weak. An entity can have its own primary key and still reference another entity; that alone does not make it weak.
+</details>
 
-A weak entity is shown with a **double rectangle**. It cannot be uniquely identified or exist independently in the same way as a strong entity; it depends on an owner entity.
+### 3. Attribute — single oval
 
-```text
-+-----------+       << double rectangle >>
-| EMPLOYEE  |       +====================+
-+-----------+       || DEPENDENT        ||
-                    +====================+
-```
+<details>
+<summary><strong>Open: Attribute oval</strong> · What does it describe?</summary>
 
-For example, a DEPENDENT record may be identified in the context of the EMPLOYEE it belongs to. The exact identifying attributes and participation rules must come from the requirements.
+An **attribute** is a property that describes an entity or, in some cases, a relationship.
 
-### Step 6 — Learn the special attribute shapes
+For STUDENT, possible attributes include student_id, first_name, email, and date_of_birth.
 
-| Attribute kind | Traditional ERD symbol | What it communicates |
-|---|---|---|
-| Simple | Single oval | One indivisible attribute |
-| Composite | One main oval connected to component ovals | Attribute has meaningful parts, e.g. address → street, city |
-| Multi-valued | Double oval | An entity may have several values, e.g. phone numbers |
-| Derived | Dashed oval | Calculated from other stored data, e.g. age from date of birth |
-| Key | Attribute name underlined in oval | Identifies an entity instance |
+**Why an oval?** It visually separates descriptive properties from the entity type itself.
 
-A composite attribute is still one attribute with component parts. A multi-valued attribute is not the same as a composite attribute.
+**How to decide:** Ask, “Is this a fact about an entity, rather than a thing the database needs to manage independently?”
 
-### Step 7 — Weak entity's identifying relationship
+**Common mistake:** Treating an attribute as an entity just because it has a name. An email address is usually a STUDENT attribute in a simple model; it becomes a separate entity only if the requirements need to manage it independently or associate it with other facts.
+</details>
 
-In traditional Chen notation, the relationship that identifies a weak entity is shown with a **double diamond**. The weak entity itself is shown with a double rectangle. Do not confuse the two symbols: one represents the dependent entity; the other represents the identifying relationship.
+### 4. Key attribute — underlined name inside an oval
 
-```text
-+-----------+       << double diamond >>       +================+
-| EMPLOYEE  |==================================|| DEPENDENT     ||
-+-----------+                                   +================+
-```
+<details>
+<summary><strong>Open: Key attribute</strong> · How do we identify an instance?</summary>
 
-### Quick symbol checklist
+A **key attribute** uniquely identifies an entity instance. In Chen notation, underline the attribute name inside its oval.
 
-Before submitting an ERD, check that:
-- Entity types use rectangles.
-- Weak entity types use double rectangles.
-- Attributes use ovals.
-- Key attributes are underlined.
-- Multi-valued attributes use double ovals.
-- Derived attributes use dashed ovals.
-- Relationships use diamonds.
-- Identifying relationships for weak entities use double diamonds.
-- Lines connect the correct shapes and the diagram is readable.
+Example: student_id identifies one student, assuming the university guarantees that it is unique and non-null.
 
-**Important:** These are Chen-style symbols. Crow's-foot diagrams use a different visual convention for relationships and cardinalities. Do not mix the two notations in one diagram unless your instructor explicitly asks you to.
+**Why underline it?** The reader can distinguish the identifier from ordinary descriptive attributes immediately.
+
+A key can also be composite: two or more attributes together identify an instance. In that case, underline each participating key attribute in the ERD.
+
+**Do not assume:** Names, phone numbers, and email addresses are unique unless the business rules guarantee it.
+</details>
+
+### 5. Relationship — single diamond
+
+<details>
+<summary><strong>Open: Relationship diamond</strong> · How are entities connected?</summary>
+
+A **relationship** represents a meaningful association between entity types. Its name is usually a verb or verb phrase.
+
+Example: STUDENT — REGISTERS — COURSE.
+
+The diamond represents REGISTERS; the rectangles represent STUDENT and COURSE.
+
+**Why a diamond?** A connecting line alone only shows that two items are linked. The diamond names the meaning of the association.
+
+Relationships can be:
+- **Unary (recursive):** an entity type relates to itself, e.g. EMPLOYEE supervises EMPLOYEE.
+- **Binary:** two entity types participate, e.g. STUDENT registers for COURSE.
+- **Ternary:** three entity types participate in one relationship.
+
+The diamond does **not** tell you the cardinality by itself. You must also specify how many instances can participate, using the notation required by your course.
+</details>
+
+### 6. Identifying relationship — double diamond
+
+<details>
+<summary><strong>Open: Identifying relationship</strong> · How is a weak entity identified?</summary>
+
+The **identifying relationship** connects a weak entity to its owner entity. In traditional Chen notation, it is drawn as a double diamond.
+
+Example: EMPLOYEE — HAS — DEPENDENT.
+
+The weak entity is the double rectangle; the identifying relationship is the double diamond. These are two different symbols and should not be confused.
+
+The owner's key participates in identifying the weak entity, along with the weak entity's partial key.
+
+**Use it when:** the dependent entity's identification relies on the owner, not merely because a relationship happens to exist.
+</details>
+
+### 7. Multivalued attribute — double oval
+
+<details>
+<summary><strong>Open: Multivalued attribute</strong> · Can one instance have several values?</summary>
+
+A **multivalued attribute** can hold more than one value for a single entity instance.
+
+Example: one STUDENT may have several phone numbers.
+
+**Why a double oval?** It marks an attribute whose value is a collection rather than one single value.
+
+**Important distinction:** Multivalued does not mean composite.
+- Multivalued: one student has several phone numbers.
+- Composite: one address can be split into street, city, and postal code.
+
+When converting an ER model to relational tables, a multivalued attribute is usually represented in a separate relation rather than storing a list in one column.
+</details>
+
+### 8. Derived attribute — dashed oval
+
+<details>
+<summary><strong>Open: Derived attribute</strong> · Can the value be calculated?</summary>
+
+A **derived attribute** is calculated from other data rather than necessarily stored as an independent value.
+
+Example: age can be calculated from date_of_birth and the current date.
+
+**Why a dashed oval?** The dashed outline indicates that the value is derived.
+
+**Use it when:** the value can reliably be computed from other attributes and the model should make that fact clear.
+
+**Design caution:** Age changes over time. Storing a person's date of birth and calculating age when needed avoids an age value becoming stale.
+</details>
+
+### 9. Composite attribute — one oval with component ovals
+
+<details>
+<summary><strong>Open: Composite attribute</strong> · Can an attribute be broken into parts?</summary>
+
+A **composite attribute** can be divided into smaller components that have their own meaning.
+
+Example: address may contain street, city, and postal_code. Name may contain first_name and last_name.
+
+In Chen notation, draw one oval for the composite attribute and connect it to smaller ovals for its components.
+
+**Use it when:** users or processes need to refer to the components separately.
+
+**Common mistake:** Confusing a composite attribute with a multivalued attribute. A composite attribute has meaningful parts; a multivalued attribute has multiple values.
+</details>
+
+### Lines and relationship constraints — also important
+
+The shapes identify model elements, but the connecting lines and their annotations communicate participation and cardinality. These are not extra entity shapes, but they are essential to a readable ERD.
+
+<details>
+<summary><strong>Open: Cardinality and participation</strong> · How many, and is participation required?</summary>
+
+**Maximum cardinality** describes the maximum number of related instances:
+- 1:1 — one to one.
+- 1:M — one to many.
+- M:N — many to many.
+
+**Minimum participation** describes whether participation is optional or mandatory:
+- Minimum 0 — optional.
+- Minimum 1 — mandatory.
+
+In traditional Chen notation, a **single line** commonly indicates partial/optional participation, while a **double line** indicates total/mandatory participation. Follow the exact notation used by your instructor.
+
+Example business rule:
+- A department may have zero or many employees.
+- Every employee must belong to exactly one department.
+
+This is a 1:M relationship from DEPARTMENT to EMPLOYEE, with optional participation on the department side and mandatory participation on the employee side.
+
+Do not infer minimum participation from “one-to-many” alone. The scenario must state or imply whether participation is required.
+</details>
+
+### Interactive knowledge checks
+
+Try to answer each question before opening its explanation.
+
+<details>
+<summary><strong>Check 1:</strong> A university stores information about STUDENT. Which shape represents STUDENT?</summary>
+
+**Answer: Single rectangle.** STUDENT is an entity type: a category of things the database manages.
+</details>
+
+<details>
+<summary><strong>Check 2:</strong> One student can have multiple phone numbers. Which attribute symbol applies?</summary>
+
+**Answer: Double oval.** The attribute is multivalued because one student can have several phone-number values.
+</details>
+
+<details>
+<summary><strong>Check 3:</strong> A dependent is identified using the employee's ID and the dependent's name. Which two special symbols are relevant?</summary>
+
+**Answer: Double rectangle and double diamond.** DEPENDENT is the weak entity; the relationship connecting it to EMPLOYEE is the identifying relationship.
+</details>
+
+<details>
+<summary><strong>Check 4:</strong> Age is calculated using date of birth. How should age be shown?</summary>
+
+**Answer: Dashed oval.** Age is a derived attribute.
+</details>
+
+<details>
+<summary><strong>Check 5:</strong> A student's name is split into first name and last name. Is it multivalued?</summary>
+
+**Answer: No.** It is composite: one name attribute has meaningful components. A multivalued attribute would allow several name values for the same student.
+</details>
+
+### Before drawing or submitting an ERD
+
+- [ ] Entity types use single rectangles.
+- [ ] Weak entity types use double rectangles only when identifier dependency exists.
+- [ ] Attributes use ovals and connect to the entity or relationship they describe.
+- [ ] Key attributes are underlined.
+- [ ] Composite attributes connect to their component ovals.
+- [ ] Multivalued attributes use double ovals.
+- [ ] Derived attributes use dashed ovals.
+- [ ] Relationships use diamonds and meaningful names.
+- [ ] Identifying relationships use double diamonds for weak entities.
+- [ ] Cardinality and minimum participation match the written business rules.
+- [ ] The diagram uses one notation consistently and remains readable.
+
+**Notation warning:** This is Chen-style notation. Crow's-foot diagrams use a different visual convention, especially at relationship ends. Do not mix Chen diamonds and Crow's-foot endpoint symbols in one diagram unless your instructor specifically asks for a hybrid.
+
+---
 
 ---
 
